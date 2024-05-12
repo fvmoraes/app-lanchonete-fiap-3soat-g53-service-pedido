@@ -12,8 +12,8 @@ spring:
     password: ${RABBIT_PASSWORD:guest}
   datasource:
     url: ${CONNECTION_STRING:jdbc:postgresql://localhost:5432/pedido}
-    password: postgres
-    username: postgres
+    password: ${DATABASE_PASSWORD:postgres}
+    username: ${DATABASE_USERNAME:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -27,17 +27,3 @@ spring:
 
     serialization:
       indent-output: true
-  security:
-    oauth2:
-      client:
-        registration:
-          cognito:
-            clientId: clientId
-            clientSecret: clientSecret
-            scope: openid
-            redirect-uri: http://localhost:8080/login/oauth2/code/cognito
-            clientName: clientName
-        provider:
-          cognito:
-            issuerUri: https://cognito-idp.{region}.amazonaws.com/{poolId}
-            user-name-attribute: cognito:username
