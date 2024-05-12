@@ -2,6 +2,7 @@ package com.fiap.lanchonete.infrastructure.gateway;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.AmqpRejectAndDontRequeueException;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -33,6 +34,7 @@ public class RabbitConsumerPedidoQueueGateway {
 	
 	@RabbitHandler
 	public void pagamentoRecebido(EventPagamentoAtualizado pagamentoAtualizado) throws PedidoNaoEncontradoException {
+		try {
 		log.info("Evento Pagamente Atualizado Recebido!");
 		Pedido pedidoRealizado = pedidoUseCases.atualizaPedidoPagamento(pagamentoAtualizado.getStatusPagamento(),
 				pagamentoAtualizado.getIdPedidoPago());
@@ -40,13 +42,19 @@ public class RabbitConsumerPedidoQueueGateway {
 		log.info("Evento PedidoRealizadoEvent sendo enviado para producao!");
 
 		template.convertAndSend(PEDIDO_EXCHANGE_1, PEDIDO_PRODUCAO_ROUTING_KEY, pedidoRealizadoEvent);
+		} catch (Exception e) {
+			throw new AmqpRejectAndDontRequeueException("");
+		}
 	}
 
 	@RabbitHandler
 	public void atualizacaoStatusProducao(PedidoAtualizadoEvent atualizacao) throws PedidoNaoEncontradoException {
+		try {
 		pedidoUseCases.atualizaPedidoStatus(atualizacao.getId(), atualizacao.getStatus());
 		log.info("Evento PedidoAtualizadoEvent recebido com sucesso!");
-	
+		} catch (Exception e) {
+			throw new AmqpRejectAndDontRequeueException("");
+		}
 	}
 
 }

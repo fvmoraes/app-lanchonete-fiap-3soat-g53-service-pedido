@@ -1,7 +1,7 @@
 # language: pt
 Funcionalidade: Produto
 
-  Cenario: Busca Pedido
+  Cenario: Busca Produtos
     Quando efeturar uma requisicao para Buscar todos os produtos
     Entao deve retornar uma lista com os produtos cadastrados
 
