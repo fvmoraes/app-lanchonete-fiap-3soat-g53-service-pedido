@@ -20,8 +20,8 @@ import com.fiap.lanchonete.ApplicationPedido;
 
 @SpringBootTest(classes = ApplicationPedido.class)
 @Testcontainers
-@ContextConfiguration(initializers = {BeansConfigTest2.Initializer.class})
-class BeansConfigTest2 {
+@ContextConfiguration(initializers = {BeansConfigTest.Initializer.class})
+class BeansConfigTest {
 
     @Autowired
     private ApplicationContext context;
