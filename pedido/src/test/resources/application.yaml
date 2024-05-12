@@ -1,0 +1,25 @@
+server:
+  servlet:
+   context-path: /pagamento
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+
+  jackson:
+    serialization.FAIL_ON_EMPTY_BEANS: false # Não falhar na serialização de objetos sem propriedades
+
+    serialization:
+      indent-output: true
+  

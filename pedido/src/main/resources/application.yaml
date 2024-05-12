@@ -1,0 +1,43 @@
+server:
+  servlet:
+   context-path: /pedido
+   
+   
+spring:
+
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USERNAME:guest}
+    password: ${RABBIT_PASSWORD:guest}
+  datasource:
+    url: ${CONNECTION_STRING:jdbc:postgresql://localhost:5432/pedido}
+    password: postgres
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update # Atualiza automaticamente o esquema do banco de dados com base nas entidades JPA
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+
+  jackson:
+    serialization.FAIL_ON_EMPTY_BEANS: false # Não falhar na serialização de objetos sem propriedades
+
+    serialization:
+      indent-output: true
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            clientId: clientId
+            clientSecret: clientSecret
+            scope: openid
+            redirect-uri: http://localhost:8080/login/oauth2/code/cognito
+            clientName: clientName
+        provider:
+          cognito:
+            issuerUri: https://cognito-idp.{region}.amazonaws.com/{poolId}
+            user-name-attribute: cognito:username
