@@ -1,8 +1,3 @@
-server:
-  servlet:
-   context-path: /pedido
-   
-   
 spring:
 
   rabbitmq:
@@ -10,6 +5,8 @@ spring:
     port: ${RABBIT_PORT:5672}
     username: ${RABBIT_USERNAME:guest}
     password: ${RABBIT_PASSWORD:guest}
+    virtual-host: fcplheqi
+    
   datasource:
     url: ${CONNECTION_STRING:jdbc:postgresql://localhost:5432/pedido}
     password: ${DATABASE_PASSWORD:postgres}
