@@ -8,10 +8,15 @@
 	</parent>
   
   <groupId>com.fiap.lanchonete</groupId>
-  <artifactId>pedido</artifactId>
+  <artifactId>service-pedido</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>Servoço de Pedidos</name>
+  <name>Serviço de Pedidos</name>
   <description>Responsavel por ter receber e atualizar os status dos pedidos</description>
+
+	<properties>
+	<sonar.organization>fvmoraes</sonar.organization>
+	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	</properties>
 
 	<dependencies>
 		<dependency>
