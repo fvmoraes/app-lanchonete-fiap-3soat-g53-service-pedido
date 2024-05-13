@@ -1,15 +1,17 @@
-spring:
+server:
+  port: ${URI_PORT:8080}
 
+spring:
   rabbitmq:
-    host: ${RABBIT_HOST:localhost}
+    host: ${RABBIT_HOST:albatross-01.rmq.cloudamqp.com}
     port: ${RABBIT_PORT:5672}
-    username: ${RABBIT_USERNAME:guest}
-    password: ${RABBIT_PASSWORD:guest}
+    username: ${RABBIT_USERNAME:fcplheqi}
+    password: ${RABBIT_PASSWORD}
     virtual-host: fcplheqi
     
   datasource:
-    url: ${CONNECTION_STRING:jdbc:postgresql://localhost:5432/pedido}
-    password: ${DATABASE_PASSWORD:postgres}
+    url: ${CONNECTION_STRING:jdbc:postgresql://35.222.27.124:5432/pagamento}
+    password: ${DATABASE_PASSWORD}
     username: ${DATABASE_USERNAME:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
