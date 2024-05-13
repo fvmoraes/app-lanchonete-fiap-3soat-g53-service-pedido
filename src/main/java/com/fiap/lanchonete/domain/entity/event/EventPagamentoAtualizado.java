@@ -2,11 +2,9 @@ package com.fiap.lanchonete.domain.entity.event;
 
 import com.fiap.lanchonete.domain.entity.StatusPagamento;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@AllArgsConstructor
 public class EventPagamentoAtualizado {
 	Integer idPedidoPago;
 	StatusPagamento statusPagamento;
