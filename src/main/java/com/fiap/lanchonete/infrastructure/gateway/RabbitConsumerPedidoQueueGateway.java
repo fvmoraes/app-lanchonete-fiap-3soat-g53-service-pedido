@@ -20,9 +20,9 @@ import com.fiap.lanchonete.domain.entity.event.PedidoRealizadoEvent;
 public class RabbitConsumerPedidoQueueGateway {
 	private static final Logger log = LoggerFactory.getLogger(RabbitConsumerPedidoQueueGateway.class);
 
-	private static final String PEDIDO_QUEUE_1 = "pedido-queue";
-	private static final String PEDIDO_EXCHANGE_1 = "pedido-exchange";
-	private static final String PEDIDO_PRODUCAO_ROUTING_KEY = "pedido-para-pruducao-routing-key";
+	public static final String PEDIDO_QUEUE_1 = "pedido-queue";
+	public static final String PEDIDO_EXCHANGE_1 = "pedido-exchange";
+	public static final String PEDIDO_PRODUCAO_ROUTING_KEY = "pedido-para-pruducao-routing-key";
 	RabbitTemplate template;
 
 	final PedidoUseCases pedidoUseCases;
