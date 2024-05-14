@@ -1,0 +1,535 @@
+{
+	"info": {
+		"_postman_id": "fe4a8bc1-65f7-454e-8946-f66adc5d043b",
+		"name": "Fase 4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20971664"
+	},
+	"item": [
+		{
+			"name": "Producao",
+			"item": [
+				{
+					"name": "GetPedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/producao/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"producao",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostPedido Apenas para teste",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"listaProdutos\": [\r\n    {\r\n      \"categoria\": \"Lanche\",\r\n      \"nome\": \"Xburguer\",\r\n      \"descricao\": \"xburguer legal\",\r\n      \"valor\": 12.00\r\n    }\r\n  ],\r\n  \"statusPedido\": \"RECEBIDO\",\r\n  \"valorTotal\": 12.00\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/producao/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"producao",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza Status Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/producao/pedido/0/PRONTO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"producao",
+								"pedido",
+								"0",
+								"PRONTO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Pedido ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/producao/pedido/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"producao",
+								"pedido",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Pedido por Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/producao/pedido/status/PRONTO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"producao",
+								"pedido",
+								"status",
+								"PRONTO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Proximo Pedido com Status Recebido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/producao/pedido/proximo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"producao",
+								"pedido",
+								"proximo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Busca Produtos Cadastrados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adiciona Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\"nome\":\"x_salada\",\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n    \"valor\": \"18.25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adiciona Produto 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Bebida\",\r\n    \"nome\":\"coca-cola_600ml\",\r\n    \"descricao\": \"coca-cola_600ml\",\r\n    \"valor\": \"8.25\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta produto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\"nome\":\"x_salada\",\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n    \"valor\": \"18.25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Produto Categoria",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\"nome\":\"x_salada\",\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n    \"valor\": \"18.25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/produto/Lanche",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"produto",
+								"Lanche"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Pedidos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Lanche\",\r\n\t\"nome\":\"x_salada\",\r\n\t\"descricao\": \"x-salada, contem carne\",\r\n    \"valor\": \"18.25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Realiza Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"listaProdutos\": [\r\n            {\r\n                \"nome\": \"x_salada\"\r\n            },\r\n            {\r\n                \"nome\": \"coca-cola_600ml\"\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Pedido Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"listaProdutos\": [\r\n            {\r\n                \"nome\": \"x_salada\"\r\n            },\r\n            {\r\n                \"nome\": \"coca-cola_600ml\"\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pedido/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Pedido pelo Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pedido/status/RECEBIDO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"status",
+								"RECEBIDO"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Situação Pagamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pedido/pagamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"pagamento",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagamento",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagamento Pedido Mercado Pago Simulação",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pedido/pagamento/mercadopago/payment/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"pagamento",
+								"mercadopago",
+								"payment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca Pedido ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/pedido/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
