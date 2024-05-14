@@ -13,7 +13,7 @@ spring:
     virtual-host: fcplheqi
     
   datasource:
-    url: ${CONNECTION_STRING:jdbc:postgresql://35.222.27.124:5432/pagamento}
+    url: ${CONNECTION_STRING:jdbc:postgresql://35.222.27.124:5432/pedido}
     password: ${DATABASE_PASSWORD}
     username: ${DATABASE_USERNAME:postgres}
     driver-class-name: org.postgresql.Driver
