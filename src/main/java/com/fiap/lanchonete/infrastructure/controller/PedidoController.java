@@ -62,8 +62,8 @@ public class PedidoController {
 		}
 	};
 
-	@GetMapping("/status")
-	public List<PedidoResponse> buscaPedidosPorStatus(@RequestBody StatusPedido status) {
+	@GetMapping("status/{status}")
+	public List<PedidoResponse> buscaPedidosPorStatus(@PathVariable StatusPedido status) {
 		return pedidoUseCases.buscaPedidosPorStatus(status).stream().map(mapper::paraResponse).toList();
 	};
 

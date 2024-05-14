@@ -1,7 +1,10 @@
+
 server:
   port: ${URI_PORT:8080}
 
 spring:
+  profiles:
+    active: prod
   rabbitmq:
     host: ${RABBIT_HOST:albatross-01.rmq.cloudamqp.com}
     port: ${RABBIT_PORT:5672}
@@ -17,12 +20,12 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: update # Atualiza automaticamente o esquema do banco de dados com base nas entidades JPA
+      ddl-auto: update
     properties:
       hibernate.jdbc.lob.non_contextual_creation: true
 
   jackson:
-    serialization.FAIL_ON_EMPTY_BEANS: false # Não falhar na serialização de objetos sem propriedades
+    serialization.FAIL_ON_EMPTY_BEANS: false
 
     serialization:
       indent-output: true

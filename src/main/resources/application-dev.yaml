@@ -1,0 +1,14 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pagamento
+    password: postgres
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+  
