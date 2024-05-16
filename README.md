@@ -17,14 +17,44 @@ Os microserviços fazem a comunicação entre si utilizando o RabbitMQ
 
 ### Informações Básicas:
 
-> Para interação básica, você pode usar o Swagger (via navegador) ou o Postman (importando a collection, o arquivo FIAP.postman_collection.json que contém a configuração essencial para iniciar o uso).
+Para interação básica, você pode usar o Swagger (via navegador) ou o Postman (importando a collection, o arquivo FIAP.postman_collection.json que contém a configuração essencial para iniciar o uso).
 
-> O banco de dados Cassandra e o banco de dados Postgress já estão configuradosdentro do docker-compose prontos para uso  dos três microserviços
+O banco de dados Cassandra e o banco de dados Postgress já estão configuradosdentro do docker-compose prontos para uso  dos três microserviços
 
-> O projeto possui boas praticas de programação com base em DDD e CleanCode.
+O projeto possui boas praticas de programação com base em DDD e CleanCode.
 
----
----
+### Banco de Dados:
+
+Esse microserviço utiliza o Postgress que utiliza as tabelas a seguir:
+
+  +--------------------+
+  |       Pedido       |
+  +--------------------+
+  | id (PK)            |
+  | statusPedido       |
+  | listaProdutosPedido|
+  | statusPagamento    |
+  | valorTotal         |
+  +--------------------+
+
+  +-----------------+
+  |     Produto     |
+  +-----------------+
+  | nome (PK)       |
+  | categoria       |
+  | descricão       |
+  | valor           |
+  +-----------------+
+
+Essa estrutura de banco de dados possui duas tabelas principais: Pedido e Produto, representando as entidades PedidoEntity e ProdutoEntity, respectivamente.
+
+    A tabela Pedido armazena informações sobre cada pedido, como seu identificador (id),uma lista de produtos relacionado ao pedido (listaProdutosPedido),  status do pedido (statusPedido), status do pagamento (statusPagamento), e o valor total (valorTotal).
+    A tabela Produto armazena informações sobre cada produto disponível, como seu identificador nome (nome), categoria (categoria), , descrição (descricao), e valor (valor).
+    
+A chave primária (PK) de cada tabela está indicada.
+
+
+
 ## Como Usar
 ### O que preciso ter instalado no meu computador?
 > Qualquer sistema operacional Linux ou subsistema Linux, Windows ou MacOs
