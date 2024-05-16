@@ -28,13 +28,13 @@ O projeto possui boas praticas de programação com base em DDD e CleanCode.
 Esse microserviço utiliza o Postgress que utiliza as tabelas a seguir:
 
   +--------------------+
-  |       Pedido       |
+  |------Pedido--------|
   +--------------------+
-  | id (PK)            |
-  | statusPedido       |
-  | listaProdutosPedido|
-  | statusPagamento    |
-  | valorTotal         |
+  |-id-(PK)------------|
+  |-statusPedido-------|
+  |-listaProdutosPedido|
+  |-statusPagamento----|
+  |-valorTotal---------|
   +--------------------+
 
   +-----------------+
