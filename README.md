@@ -28,23 +28,39 @@ O projeto possui boas praticas de programação com base em DDD e CleanCode.
 Esse microserviço utiliza o Postgress que utiliza as tabelas a seguir:
 
   +--------------------+
+  
   |------Pedido--------|
+  
   +--------------------+
+  
   |-id-(PK)------------|
+  
   |-statusPedido-------|
+  
   |-listaProdutosPedido|
+  
   |-statusPagamento----|
+  
   |-valorTotal---------|
+  
   +--------------------+
 
   +-----------------+
-  |     Produto     |
+  
+  |-----Produto-----|
+  
   +-----------------+
-  | nome (PK)       |
-  | categoria       |
-  | descricão       |
-  | valor           |
+  
+  |-nome-(PK)-------|
+  
+  |-categoria-------|
+  
+  |-descricão-------|
+  
+  |-valor-----------|
+  
   +-----------------+
+  
 
 Essa estrutura de banco de dados possui duas tabelas principais: Pedido e Produto, representando as entidades PedidoEntity e ProdutoEntity, respectivamente.
 
