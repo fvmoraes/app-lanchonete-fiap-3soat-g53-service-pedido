@@ -21,7 +21,64 @@ Para interação básica, você pode usar o Swagger (via navegador) ou o Postman
 
 O banco de dados Cassandra e o banco de dados Postgress já estão configuradosdentro do docker-compose prontos para uso  dos três microserviços
 
-O projeto possui boas praticas de programação com base em DDD e CleanCode.
+O projeto possui boas praticas de programação com base em DDD , CleanCode e padrão SAGA.
+
+### Padrão Saga
+
+Foi escolhido o padrão de coreografia para gerenciar a interação entre as aplicações de pedido, pagamento e produção, essa escolha foi justificada por alguns motivos:
+
+1. Desacoplamento dos Serviços: Cada serviço é independente e não precisa conhecer os detalhes internos dos outros serviços. Eles apenas precisam saber como reagir às mensagens que recebem. Isso permite que cada serviço evolua de forma independente.
+2. Resiliência: Se um serviço falha, os outros serviços podem continuar operando de forma independente, e o sistema pode se recuperar de falhas parciais mais facilmente.
+3. Escalabilidade Horizontal: Como cada serviço é independente, eles podem ser escalados horizontalmente de forma independente. Isso é útil para lidar com aumentos no volume de pedidos, pagamentos ou operações de cozinha sem precisar escalonar todo o sistema.
+4. Simplificação da Lógica: A lógica de negócios é distribuída e encapsulada dentro de cada serviço, reduzindo a complexidade de um orquestrador central. Cada serviço realiza suas operações e notifica os outros serviços quando uma ação é concluída.
+5. Tolerância a Falhas: A coreografia permite uma maior tolerância a falhas, pois não há um ponto único de falha, como seria o caso com um orquestrador centralizado.
+6. Adaptabilidade: Novos serviços podem ser adicionados ao sistema sem a necessidade de modificar um orquestrador central. Eles apenas precisam ser configurados para escutar e reagir às mensagens apropriadas.
+
+O fluxo pode ser visto na imagem abaixo:
+![](/img/diagrama_de_fluxo.jpeg)
+
+#### Explicação do Funcionamento
+
+1.  **Aplicação de Pedido**:
+    
+    -   Gera uma mensagem para a aplicação de Pagamento informando sobre um novo pedido.
+    
+2.  **Aplicação de Pagamento**:
+    
+    -   Escuta a mensagem de novo pedido.
+    -   Cria o pedido no banco de dados com status "PENDENTE".
+    
+3.  **Aplicação de Pagamento** (continuação):
+    
+    -   Recebe uma mensagem de atualização do status do pagamento.
+        -   Se o status for "Pago":
+            -   Atualiza o status do pedido para "Pago" no banco de dados.
+            -   Gera uma mensagem para a aplicação Pedido com status de pagamento "PAGO".
+        -   Se o status não for "PAGO":
+            -   Atualiza o status do pedido para "CANCELADO" no banco de dados.
+            -   Gera uma mensagem para a aplicação Pedido com status de pagamento "CANCELADO".
+            
+4.  **Aplicação de Pedido** (após atualização do pagamento):
+    
+    -   Recebe a mensagem de atualização do pagamento.
+        -   Se o status for "Pago":
+            -   Atualiza o status do pagamento para "Pago" e o status do Pedido "PREPARACAO".
+            -   Gera uma mensagem para a aplicação de Cozinha para iniciar a preparação do pedido.
+        -   Se o status for "Cancelado":
+            -   Atualiza o status do pagamento e o status do pedido para "Cancelado".
+5.  **Aplicação de Cozinha**:
+    
+    -   Recebe a mensagem para começar a preparar o pedido.
+    -   Inicia a preparação do pedido.
+
+6.  **Aplicação de Cozinha**(continuação):
+    -   Recebe a mensagem de atualização do status do pedido.
+    -   Gera uma mensagem para a aplicação Pedido com a atualização do status do pedido.
+
+7.  **Aplicação de Pedido** (após atualização do pagamento):
+    
+    -   Recebe a mensagem de atualização do pedido.
+    -   Atualiza o status do Pedido para o cliente(UI) poder consultar.
 
 ### Banco de Dados:
 

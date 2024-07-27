@@ -1,10 +1,10 @@
 
 server:
-  port: ${URI_PORT:8080}
+  port: ${URI_PORT:8081}
 
 spring:
   profiles:
-    active: prod
+    active: dev
   rabbitmq:
     host: ${RABBIT_HOST:albatross-01.rmq.cloudamqp.com}
     port: ${RABBIT_PORT:5672}
