@@ -7,7 +7,6 @@ public class PedidoEntityMapper {
 	ProdutoEntityMapper mapperProduct = new ProdutoEntityMapper();
 	public PedidoEntity paraPedidoEntity(Pedido PedidoObjectDomain) {
 	return new PedidoEntity(PedidoObjectDomain.getId() ,PedidoObjectDomain.getListaProdutos(),PedidoObjectDomain.getStatusPedido(), PedidoObjectDomain.getStatusPagamento(), PedidoObjectDomain.getValorTotal());
-
 	}
 	
 	public Pedido paraObjetoDominio(PedidoEntity pedidoEntity) {
