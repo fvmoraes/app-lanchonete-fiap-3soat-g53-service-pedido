@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ReportBasicoAntesCorrecao</title>
 <link
-	href="2024-07-28-ZAP-Report-/normalize/normalize.css" rel="stylesheet">
+	href="2024-08-03-ZAP-Report-/normalize/normalize.css" rel="stylesheet">
 <link
-	href="2024-07-28-ZAP-Report-/themes/original/main.css" rel="stylesheet">
+	href="2024-08-03-ZAP-Report-/themes/original/main.css" rel="stylesheet">
 <link
-	href="2024-07-28-ZAP-Report-/themes/original/colors.css" rel="stylesheet">
+	href="2024-08-03-ZAP-Report-/themes/original/colors.css" rel="stylesheet">
 </head>
 <body>
 	<header>
 		<h1>ReportBasicoAntesCorrecao</h1>
 		<p>
 			<span>Generated with</span> <a href="https://zaproxy.org"><img
-				src="2024-07-28-ZAP-Report-/zap32x32.png" alt="The ZAP logo" class="zap-logo">ZAP</a>
-			<span>on dom. 28 jul. 2024, at 18:10:45</span>
+				src="2024-08-03-ZAP-Report-/zap32x32.png" alt="The ZAP logo" class="zap-logo">ZAP</a>
+			<span>on sáb. 3 ago. 2024, at 23:29:50</span>
 		</p>
 		<p>ZAP Version: 2.15.0</p>
 		<p>
@@ -54,7 +54,6 @@
 						<ol>
 							
 							 
-							 
 							
 							
 							
@@ -62,12 +61,13 @@
 							
 							
 							<li><a
-								href="#alerts--risk-1-confidence-2"><span>Risk</span>=<span
-									class="risk-level">Baixo</span>, <span>Confidence</span>=<span
-									class="confidence-level">Médio</span> <span>(2)</span></a></li>
+								href="#alerts--risk-2-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Médio</span>, <span>Confidence</span>=<span
+									class="confidence-level">Médio</span> <span>(1)</span></a></li>
 							
 							
 							  
+							 
 							
 							
 							
@@ -113,8 +113,9 @@
 					
 					<p>The following sites were included:</p>
 					<ul class="sites-list">
-						<li><span class="site">http://localhost:8081</span></li>
+						<li><span class="site">http://localhost:8280</span></li>
 						<li><span class="site">http://localhost:8080</span></li>
+						<li><span class="site">http://localhost:8085</span></li>
 					</ul>
 					
 					<p>(If no sites were selected, all sites were included by default.)</p>
@@ -213,11 +214,11 @@
 								class="additional-info-percentages">(0,0%)</span></td>
 							<td><span>0</span><br> <span
 								class="additional-info-percentages">(0,0%)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(50,0%)</span></td>
 							<td><span>0</span><br> <span
 								class="additional-info-percentages">(0,0%)</span></td>
-							<td><span>0</span><br> <span
-								class="additional-info-percentages">(0,0%)</span></td>
-							<td><span>0</span><br> <span class="additional-info-percentages">(0,0%)</span></td>
+							<td><span>1</span><br> <span class="additional-info-percentages">(50,0%)</span></td>
 						</tr>
 						<tr>
 							
@@ -226,11 +227,11 @@
 								class="additional-info-percentages">(0,0%)</span></td>
 							<td><span>0</span><br> <span
 								class="additional-info-percentages">(0,0%)</span></td>
-							<td><span>2</span><br> <span
-								class="additional-info-percentages">(66,7%)</span></td>
 							<td><span>0</span><br> <span
 								class="additional-info-percentages">(0,0%)</span></td>
-							<td><span>2</span><br> <span class="additional-info-percentages">(66,7%)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0%)</span></td>
+							<td><span>0</span><br> <span class="additional-info-percentages">(0,0%)</span></td>
 						</tr>
 						<tr>
 							
@@ -240,10 +241,10 @@
 							<td><span>0</span><br> <span
 								class="additional-info-percentages">(0,0%)</span></td>
 							<td><span>1</span><br> <span
-								class="additional-info-percentages">(33,3%)</span></td>
+								class="additional-info-percentages">(50,0%)</span></td>
 							<td><span>0</span><br> <span
 								class="additional-info-percentages">(0,0%)</span></td>
-							<td><span>1</span><br> <span class="additional-info-percentages">(33,3%)</span></td>
+							<td><span>1</span><br> <span class="additional-info-percentages">(50,0%)</span></td>
 						</tr>
 						<tr>
 							<th scope="row">Total</th>
@@ -251,11 +252,11 @@
 								class="additional-info-percentages">(0,0%)</span></td>
 							<td><span>0</span><br> <span
 								class="additional-info-percentages">(0,0%)</span></td>
-							<td><span>3</span><br> <span
+							<td><span>2</span><br> <span
 								class="additional-info-percentages">(100,0%)</span></td>
 							<td><span>0</span><br> <span
 								class="additional-info-percentages">(0,0%)</span></td>
-							<td><span>3</span><br> <span
+							<td><span>2</span><br> <span
 								class="additional-info-percentages">(100%)</span></td>
 						</tr>
 					</tbody>
@@ -330,31 +331,24 @@
 					<tbody>
 						<tr>
 							<th scope="row"><a
-								href="#alert-type-0">Application Error Disclosure</a></th>
-							<td class="risk-level">Baixo</td>
-							<td><span>1</span><br> <span
-								class="additional-info-percentages">(33,3%)</span></td>
+								href="#alert-type-0">Estouro de Buffer</a></th>
+							<td class="risk-level">Médio</td>
+							<td><span>4</span><br> <span
+								class="additional-info-percentages">(200,0%)</span></td>
 						</tr>
 						<tr>
 							<th scope="row"><a
-								href="#alert-type-1">Divulgação de informações - Mensagens de Erro de Depuração</a></th>
-							<td class="risk-level">Baixo</td>
-							<td><span>1</span><br> <span
-								class="additional-info-percentages">(33,3%)</span></td>
-						</tr>
-						<tr>
-							<th scope="row"><a
-								href="#alert-type-2">User Agent Fuzzer</a></th>
+								href="#alert-type-1">User Agent Fuzzer</a></th>
 							<td class="risk-level">Informativo</td>
-							<td><span>240</span><br> <span
-								class="additional-info-percentages">(8.000,0%)</span></td>
+							<td><span>324</span><br> <span
+								class="additional-info-percentages">(16.200,0%)</span></td>
 						</tr>
 					</tbody>
 					<tfoot>
 						<tr>
 							<th scope="row">Total</th>
 							<td></td>
-							<td>3</td>
+							<td>2</td>
 						</tr>
 					</tfoot>
 				</table>
@@ -367,16 +361,15 @@
 				
 				 
 				 
-				 
 				
 				
 				
 				
-				<li id="alerts--risk-1-confidence-2">
+				<li id="alerts--risk-2-confidence-2">
 					<h3>
 						<span>Risk</span>=<span
-							class="risk-level">Baixo</span>, <span>Confidence</span>=<span
-							class="confidence-level">Médio</span> <span>(2)</span>
+							class="risk-level">Médio</span>, <span>Confidence</span>=<span
+							class="confidence-level">Médio</span> <span>(1)</span>
 					</h3>
 					<ol>
 						
@@ -385,6 +378,7 @@
 				
 				
 				  
+				 
 				 
 				
 				
@@ -415,56 +409,39 @@
 				<ol>
 					<li
 						id="alert-type-0">
-						<h4>Application Error Disclosure</h4>
+						<h4>Estouro de Buffer</h4>
 						<table class="alert-types-table">
 							<tr>
 								<th scope="row">Source</th>
 								<td>
 									
-									   <span>raised by a passive scanner</span> <span>(<a
-										href="https://www.zaproxy.org/docs/alerts/90022/">Application Error Disclosure</a>)
+									   <span>raised by an active scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/30001/">Estouro de Buffer</a>)
 									</span>   
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">CWE ID</th>
 								<td><a
-									href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+									href="https://cwe.mitre.org/data/definitions/120.html">120</a></td>
 							</tr>
 							<tr>
 								<th scope="row">WASC ID</th>
-								<td>13</td>
+								<td>7</td>
 							</tr>
-							
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://owasp.org/www-community/attacks/Buffer_overflow_attack">https://owasp.org/www-community/attacks/Buffer_overflow_attack</a></li>
+									</ol>
+								</td>
+							</tr>
 						</table>
 					</li>
 					<li
 						id="alert-type-1">
-						<h4>Divulgação de informações - Mensagens de Erro de Depuração</h4>
-						<table class="alert-types-table">
-							<tr>
-								<th scope="row">Source</th>
-								<td>
-									
-									   <span>raised by a passive scanner</span> <span>(<a
-										href="https://www.zaproxy.org/docs/alerts/10023/">Divulgação de informações - Mensagens de Erro de Depuração</a>)
-									</span>   
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">CWE ID</th>
-								<td><a
-									href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
-							</tr>
-							<tr>
-								<th scope="row">WASC ID</th>
-								<td>13</td>
-							</tr>
-							
-						</table>
-					</li>
-					<li
-						id="alert-type-2">
 						<h4>User Agent Fuzzer</h4>
 						<table class="alert-types-table">
 							<tr>

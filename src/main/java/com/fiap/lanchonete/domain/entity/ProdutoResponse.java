@@ -22,6 +22,11 @@ public class ProdutoResponse{
 		return nome;
 	}
 	
+	@Override
+	public String toString() {
+		return "ProdutoResponse [categoria=" + categoria + ", nome=" + nome + ", descricao=" + descricao + ", valor="
+				+ valor + "]";
+	}
 	public String getDescricao() {
 		return descricao;
 	}
