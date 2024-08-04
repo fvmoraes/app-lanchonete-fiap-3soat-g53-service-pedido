@@ -23,6 +23,20 @@ O banco de dados Cassandra e o banco de dados Postgress já estão configuradosd
 
 O projeto possui boas praticas de programação com base em DDD , CleanCode e padrão SAGA.
 
+
+### Relatório RIPD
+Foi desenvolvido um Relatório de Impacto à Proteção de Dados Pessoais (RIPD).
+[link teste](/RIPD.PDF)
+
+### Relatório processamento OWASP ZAP
+
+Foi gerado o relatório utilizando a ferramenta ZAP na versão 2.15.0.
+[link teste](old/2024-08-03-ZAP-Report-.html)
+Após foram realizados as correções e rodados a ferramenta novamente, segue o relatório final:
+
+[link teste](new/2024-08-03-ZAP-Report-.html)
+
+
 ### Padrão Saga
 
 Foi escolhido o padrão de coreografia para gerenciar a interação entre as aplicações de pedido, pagamento e produção, essa escolha foi justificada por alguns motivos:
@@ -34,8 +48,9 @@ Foi escolhido o padrão de coreografia para gerenciar a interação entre as apl
 5. Tolerância a Falhas: A coreografia permite uma maior tolerância a falhas, pois não há um ponto único de falha, como seria o caso com um orquestrador centralizado.
 6. Adaptabilidade: Novos serviços podem ser adicionados ao sistema sem a necessidade de modificar um orquestrador central. Eles apenas precisam ser configurados para escutar e reagir às mensagens apropriadas.
 
-O fluxo pode ser visto na imagem abaixo:
-![](/img/diagrama_de_fluxo.jpeg)
+O fluxo pode ser visto na imagem seguindo o link abaixo:
+[Fluxo SAGA](https://miro.com/app/board/uXjVKsgCDYA=/?share_link_id=701888483667)
+
 
 #### Explicação do Funcionamento
 
