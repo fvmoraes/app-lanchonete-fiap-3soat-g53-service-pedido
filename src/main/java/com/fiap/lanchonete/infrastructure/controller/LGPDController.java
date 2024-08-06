@@ -21,6 +21,10 @@ public class LGPDController {
 	
 	LGPDUseCases usecase;
 	
+	LGPDController(LGPDUseCases usecase){
+		this.usecase = usecase;
+	}
+	
 	@PostMapping
 	@Operation(description = "This method creates an anomization request.")
 	public ResponseEntity<String> RegistraPedido(@RequestBody Anonimizacao pedido){

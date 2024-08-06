@@ -6,14 +6,13 @@ import com.fiap.lanchonete.application.gateways.LGPDGateway;
 import com.fiap.lanchonete.domain.entity.Anonimizacao;
 
 public class LGPDUseCasesImp implements LGPDUseCases {
-	
 
-		private final LGPDGateway lgpdGateway;
+	private final LGPDGateway lgpdGateway;
 
-		public LGPDUseCasesImp(LGPDGateway lgpdGateway) {
-			this.lgpdGateway = lgpdGateway;
-			
-		}
+	public LGPDUseCasesImp(LGPDGateway lgpdGateway) {
+		this.lgpdGateway = lgpdGateway;
+
+	}
 
 	@Override
 	public List<Anonimizacao> buscaPedidos() {

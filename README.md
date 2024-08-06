@@ -26,15 +26,15 @@ O projeto possui boas praticas de programação com base em DDD , CleanCode e pa
 
 ### Relatório RIPD
 Foi desenvolvido um Relatório de Impacto à Proteção de Dados Pessoais (RIPD).
-[link teste](/RIPD.PDF)
+[link relatório RIPD](https://docs.google.com/document/d/1aOfazLaWvX0epL91mDLoZKoSHe7SImiJN_0f8_cPWwQ/edit)
 
 ### Relatório processamento OWASP ZAP
 
 Foi gerado o relatório utilizando a ferramenta ZAP na versão 2.15.0.
-[link teste](old/2024-08-03-ZAP-Report-.html)
+[link versão sem correção](old/2024-08-03-ZAP-Report-.html)
 Após foram realizados as correções e rodados a ferramenta novamente, segue o relatório final:
 
-[link teste](new/2024-08-03-ZAP-Report-.html)
+[link versão corrigida](new/2024-08-03-ZAP-Report-.html)
 
 
 ### Padrão Saga
