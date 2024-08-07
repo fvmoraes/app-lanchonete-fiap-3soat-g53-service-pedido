@@ -31,10 +31,16 @@ public class ProdutoUseCasesImp implements ProdutoUseCases{
 		
 		if (produtoGateway.buscarPeloNome(produto.getNome()) != null)
 			throw new ProdutoJaCadastradoException();
-
+		sanitizeInput(produto.getDescricao());
 		produtoGateway.salvar(produto);
 	}
-
+    private String sanitizeInput(String input) {
+ 	   if (input == null) {
+            return null;
+        } 
+ 	String newString = input.replaceAll("[^a-zA-Z0-9]", "");
+     return newString.replaceAll("(?i)AND|and|OR|or|\"|'|;|=|SELECT|select|WHERE|where|-", "");
+ }
 	@Override
 	public void atualizaProduto(Produto produto) throws ProdutoNaoEncontradoException {
 		

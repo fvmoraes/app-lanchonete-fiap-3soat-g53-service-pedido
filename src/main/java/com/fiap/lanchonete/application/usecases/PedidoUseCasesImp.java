@@ -90,6 +90,10 @@ public class PedidoUseCasesImp implements PedidoUseCases {
 	public Pedido atualizaPedidoPagamento(StatusPagamento statusPagamento, Integer id) {
 		Pedido pedidoParaAtualizar = pedidoGateway.buscaPedidoId(id);
 		pedidoParaAtualizar.setStatusPagamento(statusPagamento);
+		if (statusPagamento.equals(StatusPagamento.PAGO))
+			pedidoParaAtualizar.setStatusPedido(StatusPedido.PREPARACAO);
+		if (statusPagamento.equals(StatusPagamento.CANCELADO))
+			pedidoParaAtualizar.setStatusPedido(StatusPedido.CANCELADO);
 		pedidoGateway.atualizaPedido(pedidoParaAtualizar);
 		
 		return pedidoParaAtualizar;

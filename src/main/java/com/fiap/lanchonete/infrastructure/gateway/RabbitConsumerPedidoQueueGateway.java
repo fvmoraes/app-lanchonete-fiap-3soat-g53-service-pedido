@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import com.fiap.lanchonete.application.usecases.PedidoUseCases;
 import com.fiap.lanchonete.application.usecases.exceptions.PedidoNaoEncontradoException;
 import com.fiap.lanchonete.domain.entity.Pedido;
+import com.fiap.lanchonete.domain.entity.StatusPagamento;
 import com.fiap.lanchonete.domain.entity.event.EventPagamentoAtualizado;
 import com.fiap.lanchonete.domain.entity.event.PedidoAtualizadoEvent;
 import com.fiap.lanchonete.domain.entity.event.PedidoRealizadoEvent;
@@ -31,17 +32,20 @@ public class RabbitConsumerPedidoQueueGateway {
 		this.pedidoUseCases = pedidoUseCases;
 		this.template = template;
 	}
-	
+
 	@RabbitHandler
 	public void pagamentoRecebido(EventPagamentoAtualizado pagamentoAtualizado) throws PedidoNaoEncontradoException {
 		try {
-		log.info("Evento Pagamente Atualizado Recebido!");
-		Pedido pedidoRealizado = pedidoUseCases.atualizaPedidoPagamento(pagamentoAtualizado.getStatusPagamento(),
-				pagamentoAtualizado.getIdPedidoPago());
-		PedidoRealizadoEvent pedidoRealizadoEvent = new PedidoRealizadoEvent(pedidoRealizado);
-		log.info("Evento PedidoRealizadoEvent sendo enviado para producao!");
+			log.info("Evento Pagamente Atualizado Recebido!");
+			Pedido pedidoRealizado = pedidoUseCases.atualizaPedidoPagamento(pagamentoAtualizado.getStatusPagamento(),
+					pagamentoAtualizado.getIdPedidoPago());
 
-		template.convertAndSend(PEDIDO_EXCHANGE_1, PEDIDO_PRODUCAO_ROUTING_KEY, pedidoRealizadoEvent);
+			if (pedidoRealizado.getStatusPagamento().equals(StatusPagamento.PAGO)) {
+				PedidoRealizadoEvent pedidoRealizadoEvent = new PedidoRealizadoEvent(pedidoRealizado);
+				log.info("Evento PedidoRealizadoEvent sendo enviado para producao!");
+
+				template.convertAndSend(PEDIDO_EXCHANGE_1, PEDIDO_PRODUCAO_ROUTING_KEY, pedidoRealizadoEvent);
+			}
 		} catch (Exception e) {
 			throw new AmqpRejectAndDontRequeueException("");
 		}
@@ -50,8 +54,8 @@ public class RabbitConsumerPedidoQueueGateway {
 	@RabbitHandler
 	public void atualizacaoStatusProducao(PedidoAtualizadoEvent atualizacao) throws PedidoNaoEncontradoException {
 		try {
-		pedidoUseCases.atualizaPedidoStatus(atualizacao.getId(), atualizacao.getStatus());
-		log.info("Evento PedidoAtualizadoEvent recebido com sucesso!");
+			pedidoUseCases.atualizaPedidoStatus(atualizacao.getId(), atualizacao.getStatus());
+			log.info("Evento PedidoAtualizadoEvent recebido com sucesso!");
 		} catch (Exception e) {
 			throw new AmqpRejectAndDontRequeueException("");
 		}

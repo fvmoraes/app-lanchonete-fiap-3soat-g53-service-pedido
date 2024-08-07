@@ -2,6 +2,7 @@ package com.fiap.lanchonete.infrastructure.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 
@@ -10,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import com.fiap.lanchonete.domain.entity.Categoria;
 import com.fiap.lanchonete.domain.entity.Produto;
-import com.fiap.lanchonete.domain.entity.ProdutoResponse;
 import com.fiap.lanchonete.infrastructure.requestsdto.ProdutoRequest;
 
 class ProdutoRequestMapperTest {
@@ -41,13 +41,13 @@ class ProdutoRequestMapperTest {
         Produto produto = new Produto(Categoria.Bebida, "Coca-Cola", "Refrigerante", BigDecimal.valueOf(5.99));
 
         // Act
-        ProdutoResponse produtoResponse = produtoRequestMapper.paraResponse(produto);
+        String produtoResponse = produtoRequestMapper.paraResponse(produto);
 
         // Assert
         assertNotNull(produtoResponse);
-        assertEquals(produto.getCategoria(), produtoResponse.getCategoria());
-        assertEquals(produto.getNome(), produtoResponse.getNome());
-        assertEquals(produto.getDescricao(), produtoResponse.getDescricao());
-        assertEquals(produto.getValor(), produtoResponse.getValor());
+        assertTrue(produtoResponse.contains(produto.getCategoria().toString()));
+        assertTrue( produtoResponse.contains(produto.getNome()));
+        assertTrue(produtoResponse.contains(produto.getDescricao()));
+        assertTrue(produtoResponse.contains(String.valueOf(produto.getValor())));
     }
 }

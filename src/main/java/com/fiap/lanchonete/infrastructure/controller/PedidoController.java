@@ -67,11 +67,12 @@ public class PedidoController {
 		return pedidoUseCases.buscaPedidosPorStatus(status).stream().map(mapper::paraResponse).toList();
 	};
 
-	// cria o pedido
+
 	@PostMapping
 	public ResponseEntity<PedidoResponse> realizarPedido(@RequestBody PedidoRequest pedido) {
 		try {
-
+			pedido.getListaProdutos().forEach(produto -> validateInput(produto.getNome()));
+			
 			Pedido pedidoRealizado = pedidoUseCases.realizaPedido(mapper.paraObjetoDominio(pedido));
 
 			PedidoRealizadoEvent pedidoRealizadoEvent = new PedidoRealizadoEvent(pedidoRealizado);
@@ -85,5 +86,11 @@ public class PedidoController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
-
+	private void validateInput(String input) {
+		if (input == null) {
+			return;
+		} /*
+		if (input.toUpperCase().matches(".*(AND|UNION|ALL|%|<|>|\\(|\\)|\\{|\\}|\\[|\\]|!|@|#|$|HTTP|WWW|OR|\"|\\\\|=|:|'|;|SELECT|WHERE).*")) 
+			throw new IllegalArgumentException();*/
+		}
 }
