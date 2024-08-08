@@ -89,8 +89,8 @@ public class PedidoController {
 	private void validateInput(String input) {
 		if (input == null) {
 			return;
-		} /*
-		if (input.toUpperCase().matches(".*(AND|UNION|ALL|%|<|>|\\(|\\)|\\{|\\}|\\[|\\]|!|@|#|$|HTTP|WWW|OR|\"|\\\\|=|:|'|;|SELECT|WHERE).*")) 
-			throw new IllegalArgumentException();*/
+		} 
+		if (input.toUpperCase().matches(".*(AND|UNION|ALL|%|<|>|!|@|#|HTTP|WWW|\\.COM|OR|\\\"|\\\\|=|:|'|\\'|;|=|SELECT|WHERE){1}.*"))
+			throw new IllegalArgumentException();
 		}
 }
